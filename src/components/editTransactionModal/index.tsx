@@ -14,21 +14,28 @@ import { TransactionsContext } from '../../contexts/transactionsContext'
 import { useContextSelector } from 'use-context-selector'
 
 const newTransactionFormSchema = z.object({
+  id: z.number(),
   description: z.string(),
-  price: z.number().multipleOf(0.01),
+  price: z.number(),
   category: z.string(),
   type: z.enum(['income', 'outcome']),
 })
 
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
-export function NewTransactionModal() {
-  const createTransaction = useContextSelector(
-    TransactionsContext,
-    (context) => {
-      return context.createTransaction
-    },
-  )
+interface Transaction {
+  id: number
+  description: string
+  type: 'income' | 'outcome'
+  price: number
+  category: string
+  createdAt: string
+}
+
+export function EditTransactionModal(transaction: Transaction) {
+  const editTransaction = useContextSelector(TransactionsContext, (context) => {
+    return context.editTransaction
+  })
 
   const {
     control,
@@ -37,13 +44,21 @@ export function NewTransactionModal() {
     formState: { isSubmitting },
     reset,
   } = useForm<NewTransactionFormInputs>({
+    defaultValues: {
+      id: transaction.id,
+      description: transaction.description,
+      type: transaction.type,
+      price: transaction.price,
+      category: transaction.category,
+    },
     resolver: zodResolver(newTransactionFormSchema),
   })
 
-  async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    const { description, price, category, type } = data
+  async function handleEditNewTransaction(data: NewTransactionFormInputs) {
+    const { id, description, price, category, type } = data
 
-    await createTransaction({
+    await editTransaction({
+      id,
       description,
       price,
       category,
@@ -62,7 +77,7 @@ export function NewTransactionModal() {
         <CloseButton>
           <X size={24} />
         </CloseButton>
-        <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+        <form onSubmit={handleSubmit(handleEditNewTransaction)}>
           <input
             type="text"
             placeholder="Descrição"
@@ -70,7 +85,7 @@ export function NewTransactionModal() {
             {...register('description')}
           />
           <input
-            type="float"
+            type="number"
             placeholder="Preço"
             required
             {...register('price', { valueAsNumber: true })}
@@ -89,7 +104,7 @@ export function NewTransactionModal() {
                 <>
                   <TransactionType
                     onValueChange={field.onChange}
-                    value={field.value}
+                    value={transaction.type}
                   >
                     <TransactionTypeButton variant="income" value="income">
                       <ArrowCircleUp size={24} />
@@ -98,7 +113,7 @@ export function NewTransactionModal() {
                   </TransactionType>
                   <TransactionType
                     onValueChange={field.onChange}
-                    value={field.value}
+                    value={transaction.type}
                   >
                     <TransactionTypeButton variant="outcome" value="outcome">
                       <ArrowCircleDown size={24} />
@@ -110,7 +125,7 @@ export function NewTransactionModal() {
             }}
           />
           <button type="submit" disabled={isSubmitting}>
-            Cadastrar
+            Edit
           </button>
         </form>
       </Content>

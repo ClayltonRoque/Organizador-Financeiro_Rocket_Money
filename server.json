@@ -1,68 +1,132 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "description": "Desenvolvimento de site",
-      "type": "income",
-      "category": "Venda",
-      "price": 14000,
-      "createdAt": "2022-07-29T19:36:44.505Z"
-    },
-    {
-      "id": 2,
-      "description": "Hamburger",
+      "description": "Aliexpress",
+      "price": 101.04,
+      "category": "santander",
       "type": "outcome",
-      "category": "Alimentação",
-      "price": 30,
-      "createdAt": "2022-07-29T19:36:44.505Z"
+      "createdAt": "2023-10-10T16:34:38.796Z",
+      "id": 1
     },
     {
-      "id": 3,
-      "description": "Saudade Dela",
+      "description": "Aliexpress",
+      "price": 103,
+      "category": "santander",
       "type": "outcome",
-      "category": "Sofrimento",
-      "price": 8000,
-      "createdAt": "2022-07-29T19:36:44.505Z"
+      "createdAt": "2023-10-10T16:37:48.162Z",
+      "id": 2
     },
     {
-      "description": "Saudade Dela",
-      "price": 2,
-      "category": "Sofrimento",
-      "type": "income",
-      "createdAt": "2022-09-06T22:04:00.862Z",
+      "description": "Aliexpress",
+      "price": 103,
+      "category": "santander",
+      "type": "outcome",
+      "createdAt": "2023-10-10T16:40:37.655Z",
+      "id": 3
+    },
+    {
+      "description": "enel",
+      "price": 525.66,
+      "category": "santander",
+      "type": "outcome",
+      "createdAt": "2023-10-16T14:12:16.830Z",
       "id": 4
     },
     {
-      "description": "Saudade Dela",
-      "price": 3,
-      "category": "Sofrimento",
-      "type": "income",
-      "createdAt": "2022-09-06T22:04:12.097Z",
+      "description": "cagece",
+      "price": 149.6,
+      "category": "santander",
+      "type": "outcome",
+      "createdAt": "2023-10-16T14:18:21.162Z",
       "id": 5
     },
     {
-      "description": "Saudade Dela",
-      "price": 50,
-      "category": "Sofrimento",
-      "type": "income",
-      "createdAt": "2022-09-07T01:41:13.778Z",
+      "description": "aliexpress",
+      "price": 342.4,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:10:19.808Z",
       "id": 6
     },
     {
-      "description": "Saudade Dela",
-      "price": 50,
-      "category": "Sofrimento",
-      "type": "income",
-      "createdAt": "2022-09-07T02:29:41.116Z",
+      "description": "aliexpress",
+      "price": 49.92,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:12:30.245Z",
       "id": 7
     },
     {
-      "description": "era so wild rift",
-      "price": 5,
-      "category": "Sofrimento",
-      "type": "income",
-      "createdAt": "2022-09-07T23:15:54.167Z",
+      "description": "detentista",
+      "price": 159.99,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:13:23.544Z",
       "id": 8
+    },
+    {
+      "description": "adiantamento 1",
+      "price": 1040.31,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:14:36.336Z",
+      "id": 9
+    },
+    {
+      "description": "adiantamento 2",
+      "price": 337.1,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:15:57.667Z",
+      "id": 10
+    },
+    {
+      "description": "leão ",
+      "price": 433.32,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:16:36.928Z",
+      "id": 11
+    },
+    {
+      "description": "adiantamento 3",
+      "price": 1059.52,
+      "category": "iti",
+      "type": "outcome",
+      "createdAt": "2023-10-16T15:18:50.781Z",
+      "id": 12
+    },
+    {
+      "description": "Nubank",
+      "price": 200,
+      "category": "exame",
+      "type": "outcome",
+      "createdAt": "2023-10-16T17:23:39.262Z",
+      "id": 13
+    },
+    {
+      "description": "Shein",
+      "price": 121.45,
+      "category": "nubank",
+      "type": "outcome",
+      "createdAt": "2023-10-16T17:25:59.492Z",
+      "id": 14
+    },
+    {
+      "description": "aliexpress",
+      "price": 37.15,
+      "category": "inter",
+      "type": "outcome",
+      "createdAt": "2023-10-16T17:28:46.195Z",
+      "id": 15
+    },
+    {
+      "description": "adiantamento 4",
+      "price": 674.31,
+      "category": "inter",
+      "type": "outcome",
+      "createdAt": "2023-10-16T17:30:14.564Z",
+      "id": 16
     }
   ]
 }

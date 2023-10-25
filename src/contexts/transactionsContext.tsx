@@ -18,10 +18,20 @@ interface CreateTransactionInput {
   type: 'income' | 'outcome'
 }
 
+interface editTransactionInput {
+  id: number
+  description?: string
+  price?: number
+  category?: string
+  type?: 'income' | 'outcome'
+}
+
 interface TransactionContextType {
   transactions: Transaction[]
   fetchTransactions: (query?: string) => Promise<void>
   createTransaction: (data: CreateTransactionInput) => Promise<void>
+  editTransaction: (data: editTransactionInput) => Promise<void>
+  deleteTransaction: (transcation: Transaction) => Promise<void>
 }
 
 interface TransactionsProviderProps {
@@ -42,23 +52,40 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     })
 
     setTransactions(response.data)
-  },[])
+  }, [])
 
-  const createTransaction = useCallback( 
+  const createTransaction = useCallback(
     async (data: CreateTransactionInput) => {
-        const { description, price, category, type } = data
-  
-        const response = await api.post('transactions', {
+      const { description, price, category, type } = data
+      const response = await api.post('transactions', {
         description,
         price,
         category,
         type,
         createdAt: new Date(),
-    })
+      })
+      setTransactions((state) => [response.data, ...state])
+    },
+    [],
+  )
 
+  const editTransaction = useCallback(async (data: editTransactionInput) => {
+    const { id, description, price, category, type } = data
+    const response = await api.put(`transactions/${id}`, {
+      description,
+      price,
+      category,
+      type,
+      createdAt: new Date(),
+    })
+    setTransactions((state) => state.filter((t) => t.id !== data.id))
     setTransactions((state) => [response.data, ...state])
-  }, [],)
-  
+  }, [])
+
+  const deleteTransaction = useCallback(async (transaction: Transaction) => {
+    await api.delete(`transactions/${transaction.id}`)
+    setTransactions((state) => state.filter((t) => t !== transaction))
+  }, [])
   useEffect(() => {
     fetchTransactions()
   }, [fetchTransactions])
@@ -69,6 +96,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         transactions,
         fetchTransactions,
         createTransaction,
+        editTransaction,
+        deleteTransaction,
       }}
     >
       {children}
